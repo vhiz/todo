@@ -1,0 +1,48 @@
+.delete {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .item {
+        display: flex;
+        --webkit-box-shadow: 5px 5px 15px 8px rgba(0, 0, 0, 0.07);
+        box-shadow: 5px 5px 15px 8px rgba(0, 0, 0, 0.07);
+        border-radius: 20px;
+        padding: 6px 10px;
+        gap: 20px;
+        transition: ease 1s;
+        width: 1000px;
+
+        .left {
+            flex: 1;
+            display: flex;
+
+
+            span {
+                font-size: 12px;
+            }
+        }
+
+        .right {
+            display: flex;
+            flex: 1;
+            justify-content: flex-end;
+
+            .delete {
+                cursor: pointer;
+                color: rgb(241, 71, 71);
+                transition: ease 1s;
+            }
+
+
+            .delete:hover {
+                color: white;
+            }
+        }
+    }
+
+    .item:hover {
+        background-color: rgb(243, 149, 149);
+
+    }
+}

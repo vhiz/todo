@@ -1,0 +1,61 @@
+.deletei {
+    display: flex;
+    --webkit-box-shadow: 5px 5px 15px 8px rgba(0, 0, 0, 0.07);
+    box-shadow: 5px 5px 15px 8px rgba(0, 0, 0, 0.07);
+    border-radius: 20px;
+    padding: 6px 10px;
+    gap: 20px;
+    transition: ease 1s;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(231, 211, 211);
+
+    .left {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        padding: 0 10px;
+
+        h2{
+            font-size: 15px;
+            color: red;
+        }
+
+    }
+
+    .right{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        button{
+            border: none;
+            background-color: rgb(231, 211, 211);
+            height: 20px;
+            width: 25px;
+            border-radius: 5px;
+        }
+
+        .yes{
+            border: 1px solid green;
+            color: green;
+            transition: ease 1s;
+        }
+
+        .yes:hover{
+            background-color: green;
+            color: white;
+        }
+
+        .no{
+            border: 1px solid red;
+            color: red;
+            transition: ease 1s;
+        }
+
+        .no:hover{
+            background-color: red;
+            color: white;
+        }
+    }
+}
