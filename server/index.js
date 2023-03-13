@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const app = Express();
 const helmet = require("helmet");
 require("dotenv/config");
+const { connect } = require("mongoose");
 
 app.use(Express.json());
 

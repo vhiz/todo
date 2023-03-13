@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const makeRequest = axios.create({
-    baseURL: "http://localhost:3002/api/",
+    baseURL: "https://todoapi-2ubu.onrender.com/api/",
     withCredentials: true
 })
