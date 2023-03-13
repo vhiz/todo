@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./todo.scss";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
@@ -8,12 +8,17 @@ import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
 import Item from "../item/Item";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { AuthContext } from "../../context/authContext";
 
 export default function Todo() {
-  const { isLoading, error, data } = useQuery(["todo"], async () => {
-    const res = await makeRequest.get("/todos");
-    return res.data;
-  });
+  const { currentUser } = useContext(AuthContext);
+  const { isLoading, error, data } = useQuery(
+    ["todo", currentUser],
+    async () => {
+      const res = await makeRequest.get(`/todos/${currentUser._id}`);
+      return res.data;
+    }
+  );
 
   const queryClient = useQueryClient();
 
@@ -28,8 +33,8 @@ export default function Todo() {
   };
 
   const mutation = useMutation(
-    (item) => {
-      return makeRequest.post("/todos", item);
+    (newTodo) => {
+      return makeRequest.post(`/todos/${currentUser._id}`, newTodo);
     },
     {
       onSuccess: () => {
@@ -42,7 +47,10 @@ export default function Todo() {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      mutation.mutate(item);
+      const newTodo = {
+        ...item,
+      };
+      mutation.mutate(newTodo);
       setItem(null);
     } catch (error) {
       setError(error.response.data);
@@ -73,7 +81,7 @@ export default function Todo() {
           </Box>
         ) : (
           data.map((todo) => (
-            <Item item={todo.items} key={todo.id} id={todo.id} />
+            <Item item={todo.items} key={todo._id} id={todo._id} />
           ))
         )}
       </div>
