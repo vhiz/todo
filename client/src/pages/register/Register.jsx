@@ -28,7 +28,7 @@ export default function Register() {
       };
 
       try {
-        await axios.post("http://localhost:3002/api/users/register", user);
+        await axios.post("https://todoapi-2ubu.onrender.com/api/users/register", user);
         navigate("/login");
       } catch (error) {
         setError(error.response.data);
